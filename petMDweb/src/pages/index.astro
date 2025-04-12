@@ -1,84 +1,36 @@
 ---
+import VitalSign from '../components/Vitals.astro'
+import Video from '../components/Video.astro'
 ---
 
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Live Dashboard</title>
-    <style>
-      body {
-        font-family: sans-serif;
-        margin: 0;
-        padding: 1rem;
-        background-color: #f9fafb;
-      }
-      .dashboard {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1rem;
-      }
-      @media (min-width: 768px) {
-        .dashboard {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-      .card {
-        background: white;
-        border-radius: 1rem;
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        padding: 1rem;
-      }
-      .video-container {
-        background: black;
-        border-radius: 0.5rem;
-        overflow: hidden;
-        height: 360px;
-      }
-      video {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-      .vital-row {
-        display: flex;
-        justify-content: space-between;
-        margin: 0.5rem 0;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="dashboard">
-      <!-- Video Feed Card -->
-      <div class="card">
-        <h2>Live Video Feed</h2>
-        <div class="video-container">
-          <video src="" autoplay muted playsinline>
-            Your browser does not support the video tag.
-          </video>
-        </div>
-      </div>
-
-      <!-- Vital Signs Card -->
-      <div class="card">
-        <h2>Vital Signs</h2>
-        <div class="vital-row">
-          <span>Heart Rate:</span>
-          <span>-- bpm</span>
-        </div>
-        <div class="vital-row">
-          <span>SpO₂:</span>
-          <span>-- %</span>
-        </div>
-        <div class="vital-row">
-          <span>Body Temp:</span>
-          <span>-- °C</span>
-        </div>
-        <div class="vital-row">
-          <span>Respiration Rate:</span>
-          <span>-- bpm</span>
-        </div>
-      </div>
-    </div>
-  </body>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Live Dashboard</title>
+		<style>
+			body {
+				font-family: sans-serif;
+				margin: 0;
+				padding: 1rem;
+				background-color: #f9fafb;
+			}
+			.dashboard {
+				display: grid;
+				grid-template-columns: 1fr;
+				gap: 1rem;
+			}
+			@media (min-width: 768px) {
+				.dashboard {
+					grid-template-columns: 1fr 1fr;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="dashboard">
+			<Video />
+			<VitalSign />
+		</div>
+	</body>
 </html>
