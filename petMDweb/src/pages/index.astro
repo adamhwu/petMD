@@ -1,9 +1,7 @@
 ---
 import VitalSign from '../components/Vitals.astro'
-import Video from '../components/Video.astro'
-import VideoStream from '../components/VideoTest.astro'
-
-const socket = new WebSocket(import.meta.env.PUBLIC_SOCKET_URL);
+import Video from '../components/video.astro'
+import VideoStream from "../components/video-stream.astro"
 ---
 
 <html lang="en">
@@ -34,7 +32,6 @@ const socket = new WebSocket(import.meta.env.PUBLIC_SOCKET_URL);
 		<div class="dashboard">
 			<Video />
 			<VitalSign />
-			<VideoStream websocketUrl= {socket} />
 		</div>
 	</body>
 </html>

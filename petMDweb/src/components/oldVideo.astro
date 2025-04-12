@@ -1,0 +1,50 @@
+---
+import VideoStream from './video-stream.astro';
+---
+<style>
+.card {
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+}
+/*.video-container {*/
+/*  background: black;*/
+/*  border-radius: 1rem;*/
+/*  box-shadow: 0 2px 8px rgba(0,0,0,0.1);*/
+/*  padding: 1rem;*/
+/*}*/
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.video-container {
+  position: relative;
+  padding-bottom: 56.25%; /* 16:9 ratio */
+  height: 0;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  margin: 1rem 0;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 16px;
+}
+</style>
+
+<!-- Video Feed Card -->
+<div class="card">
+  <h2>Live Video Feed</h2>
+  <div class="video-container">
+    <VideoStream />
+  </div>
+</div>
+
