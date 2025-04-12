@@ -1,7 +1,7 @@
 import cv2 as cv
 import time
 from computervision.markerDetectionPiCam import get_marker_data
-from computervision.obstacleDetection import is_obstacle_ahead
+from petMD.src.pi.obstacleavoidance.obstacleDetection import is_obstacle_ahead
 
 # Stub for checking if GPS fallback is available
 def gps_available():
