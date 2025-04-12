@@ -1,0 +1,27 @@
+---
+---
+<html>
+  <head>
+    <style>
+    #video-stream {
+      max-width: 100%;
+      border: 2px solid #ccc;
+    }
+    </style>
+  </head>
+  <body>
+    <img id="video-stream" src="" alt="Live stream from Pi" />
+    <script type="module">
+    const socket = new WebSocket("ws://172.20.10.3:8765");
+
+    socket.onmessage = function (event) {
+      document.getElementById("video-stream").src =
+        "data:image/jpeg;base64," + event.data;
+    };
+
+      socket.onerror = function (err) {
+        console.error("WebSocket error:", err);
+      };
+    </script>
+  </body>
+</html>
