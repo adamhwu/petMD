@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 
 # Define your motor driver pins (BCM mode)
-LEFT_EN = 18     # ENA → PWM pin for left motor
+LEFT_EN = 12     # ENA → PWM pin for left motor
 LEFT_IN1 = 23
 LEFT_IN2 = 24
 
@@ -17,6 +17,16 @@ GPIO.setwarnings(False)
 motor_pins = [LEFT_EN, LEFT_IN1, LEFT_IN2, RIGHT_EN, RIGHT_IN1, RIGHT_IN2]
 for pin in motor_pins:
     GPIO.setup(pin, GPIO.OUT)
+
+def init():
+    GPIO.output(LEFT_IN1, GPIO.LOW)
+    GPIO.output(LEFT_IN2, GPIO.LOW)
+    GPIO.output(RIGHT_IN1, GPIO.LOW)
+    GPIO.output(RIGHT_IN2, GPIO.LOW)
+    left_pwm.ChangeDutyCycle(0)
+    right_pwm.ChangeDutyCycle(0)
+
+init()
 
 # Create PWM channels
 left_pwm = GPIO.PWM(LEFT_EN, 1000)
