@@ -1,7 +1,6 @@
 import cv2 as cv
 import numpy as np
 
-# Set up the ArUco detector once
 dictionary = cv.aruco.getPredefinedDictionary(cv.aruco.DICT_6X6_250)
 parameters = cv.aruco.DetectorParameters()
 detector = cv.aruco.ArucoDetector(dictionary, parameters)
