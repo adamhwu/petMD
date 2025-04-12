@@ -1,65 +1,50 @@
 import cv2 as cv
-import time
+import numpy as np
 
-def main():
-    # Open the Pi camera (should be index 0)
-    cap = cv.VideoCapture(0)
+# Set up the ArUco detector once
+dictionary = cv.aruco.getPredefinedDictionary(cv.aruco.DICT_6X6_250)
+parameters = cv.aruco.DetectorParameters()
+detector = cv.aruco.ArucoDetector(dictionary, parameters)
 
-    # Set resolution if needed (adjust depending on your Pi camera config)
-    cap.set(cv.CAP_PROP_FRAME_WIDTH, 640)
-    cap.set(cv.CAP_PROP_FRAME_HEIGHT, 480)
+def detect_marker(frame):
+    gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+    corners, ids, _ = detector.detectMarkers(gray)
 
-    # Initialize the ArUco detector
-    dictionary = cv.aruco.getPredefinedDictionary(cv.aruco.DICT_6X6_250)
-    parameters = cv.aruco.DetectorParameters()
-    detector = cv.aruco.ArucoDetector(dictionary, parameters)
+    if ids is not None:
+        for marker in corners:
+            x = int((marker[0][0][0] + marker[0][2][0]) / 2)
+            y = int((marker[0][0][1] + marker[0][2][1]) / 2)
+            size1 = cv.norm(marker[0][0] - marker[0][2])
+            size2 = cv.norm(marker[0][1] - marker[0][3])
+            distance = int((size1 + size2) / 2)
+            return (x, y, distance)
+    return None
 
-    print("[INFO] ArUco detection initialized.")
+# Initialize camera
+cap = cv.VideoCapture(0)
 
-    while True:
-        ret, frame = cap.read()
-        if not ret:
-            print("[ERROR] Failed to capture frame")
-            break
+if not cap.isOpened():
+    print("❌ Failed to open Pi Camera.")
+    exit()
 
-        # Convert to grayscale for detection
-        gray = cv.cvtColor(frame, cv.COLOR_BGR2GRAY)
+while True:
+    ret, frame = cap.read()
+    if not ret:
+        print("❌ Failed to read frame.")
+        break
 
-        # Detect ArUco markers
-        markerCorners, markerIds, _ = detector.detectMarkers(gray)
+    result = detect_marker(frame)
+    if result:
+        x, y, dist = result
+        print(f"Marker detected at ({x}, {y}), approx. size: {dist}")
 
-        if markerIds is not None:
-            # Draw detected markers
-            cv.aruco.drawDetectedMarkers(frame, markerCorners, markerIds)
+        # Optional: draw marker center
+        cv.circle(frame, (x, y), 6, (0, 255, 0), -1)
 
-            for corners, markerId in zip(markerCorners, markerIds):
-                # Compute marker center
-                x_center = int((corners[0][0][0] + corners[0][2][0]) / 2)
-                y_center = int((corners[0][0][1] + corners[0][2][1]) / 2)
+    # Optional: show window (only works with GUI / monitor)
+    cv.imshow("PiCam ArUco", frame)
+    if cv.waitKey(1) & 0xFF == ord('q'):
+        break
 
-                # Estimate "distance" based on marker size
-                size1 = cv.norm(corners[0][0] - corners[0][2])
-                size2 = cv.norm(corners[0][1] - corners[0][3])
-                marker_distance = int((size1 + size2) / 2)
-
-                # Output to console
-                print(f"[✓] Marker ID: {markerId[0]} | x: {x_center}, y: {y_center}, size: {marker_distance}")
-
-                # Draw center dot
-                cv.circle(frame, (x_center, y_center), 5, (0, 255, 0), -1)
-
-        else:
-            print("[ ] No marker detected.")
-
-        # Show frame (for debug)
-        cv.imshow('Pi ArUco Tracker', frame)
-
-        # Exit if 'q' is pressed
-        if cv.waitKey(1) & 0xFF == ord('q'):
-            break
-
-    cap.release()
-    cv.destroyAllWindows()
-
-if __name__ == "__main__":
-    main()
+cap.release()
+cv.destroyAllWindows()
