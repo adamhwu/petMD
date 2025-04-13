@@ -1,0 +1,8 @@
+Additional Materials
+
+Name                  Cost          Link
+Raspberry Pi 5        63.99         https://www.alibaba.com/product-detail/New-Raspberry-Pi-5-Model-B_1601195508011.html?selectedCarrierCode=SEMI_MANAGED_STANDARD@@STANDARD
+Arducam               6.99          https://www.amazon.com/Arducam-Megapixels-Sensor-OV5647-Raspberry/dp/B012V1HEP4/ref=sr_1_4?crid=XV6D4NSTRLHL&dib=eyJ2IjoiMSJ9.SdZxeeuAaWgC9GeoeEJUFNZ4Fgg2dUoaMR5VLELavDRtvRueiokQlTC2dboonaKgdp-hTfY87ZxTrZwO1GauxzMmizHTzXMzQAFDd0J7BRxf50efFqoYeJHrNms1IhWbvwrhZhSkdQkbd6T-ZQ3PqS3BJPZKJM-vwNr06IhwKufhrKqQexEdtjdgPKOqkhmuNOb_2Nc5hmRpOCVwHtibz5hXrpNzCMzZ2j1lENK-xTE.___dkSkN9BPV-Y328IHcwmkAyQb7YOuxd7RaBX6iH68&dib_tag=se&keywords=pi%2Bcam&qid=1744500558&sprefix=皮ca%2Bm%2Caps%2C2719&sr=8-4&th=1
+Portable Charger      N/A           N/A
+Wooden Platform       N/A           N/A
+3D Printed Stilts     N/A           N/A
