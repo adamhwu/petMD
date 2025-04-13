@@ -41,7 +41,7 @@ window.addEventListener("DOMContentLoaded", () => {
   const temp = document.getElementById("tempdata");
   const humidity = document.getElementById("humiditydata");
 
-  const socket = new WebSocket("ws://172.20.10.13:8765"); // WebSocket server address
+  const socket = new WebSocket("ws://172.20.10.2:8765"); // WebSocket server address
   console.log("here");
 
   socket.onmessage = (event) => {
