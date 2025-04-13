@@ -13,7 +13,10 @@ window.addEventListener("DOMContentLoaded", () => {
   console.log("here");
 
   socket.onmessage = (event) => {
-    img.src = `data:image/jpeg;base64,${event.data}`;
+    const data = JSON.parse(event.data)
+    if (data.type == "image"){
+      img.src = `data:image/jpeg;base64,${data.value}`;
+    }
   }
 });
 </script>

@@ -23,18 +23,37 @@
 <h2>Vital Signs</h2>
 <div class="vital-row">
   <span>Heart Rate:</span>
-  <span>-- bpm</span>
-</div>
-<div class="vital-row">
-  <span>SpO₂:</span>
-  <span>-- %</span>
+  <span id="bpmdata">-- bpm</span>
 </div>
 <div class="vital-row">
   <span>Body Temp:</span>
-  <span>-- °C</span>
+  <span id="tempdata">-- °C</span>
 </div>
 <div class="vital-row">
-  <span>Respiration Rate:</span>
-  <span>-- bpm</span>
+  <span>Humidity:</span>
+  <span id="humiditydata">-- %</span>
 </div>
 </div>
+
+<script type="module" client:load>
+window.addEventListener("DOMContentLoaded", () => {
+  const pulse = document.getElementById("bpmdata");
+  const temp = document.getElementById("tempdata");
+  const humidity = document.getElementById("humiditydata");
+
+  const socket = new WebSocket("ws://172.20.10.13:8765"); // WebSocket server address
+  console.log("here");
+
+  socket.onmessage = (event) => {
+    const inter = JSON.parse(event.data);
+    if (typeof(inter) == "string"){
+      const data = JSON.parse(inter);
+      if (data.type == "sensor"){
+        pulse.innerText = data.pulse + " BPM";
+        temp.innerText = data.temperature + " °C";
+        humidity.innerText = data.humidity + " %";
+      }
+    }
+  }
+});
+</script>
