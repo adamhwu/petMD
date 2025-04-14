@@ -8,7 +8,7 @@ import json
 from camera import get_frame  # <- Use shared camera
 
 async def send_frames():
-    uri = "ws://172.20.10.2:8765"
+    uri = "IP ADDR of server"
     async with websockets.connect(uri,
                                   ping_interval=None,
                                   ping_timeout=None

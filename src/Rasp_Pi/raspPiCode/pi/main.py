@@ -97,7 +97,7 @@ async def control_loop():
 
 # 📡 Frame streamer (copied from clientTWO.py)
 async def send_frames():
-    uri = "ws://172.20.10.2:8765"
+    uri = "<IP ADDR of SERVER"
     try:
         async with websockets.connect(uri, ping_interval=None, ping_timeout=None) as websocket:
             print("[📡] WebSocket connected.")
