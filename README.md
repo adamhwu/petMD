@@ -1,3 +1,13 @@
+# petMD
+
+ ![Static Badge](https://img.shields.io/badge/Contributors-2-blueviolet)
+ ![Static Badge](https://img.shields.io/badge/Language-Arduino-blue)
+ ![Static Badge](https://img.shields.io/badge/Language-Python-red)
+ ![Static Badge](https://img.shields.io/badge/Tech-RaspberryPi-hotpink)
+ ![Static Badge](https://img.shields.io/badge/Tech-ESP32-darkblue)
+ ![Static Badge](https://img.shields.io/badge/Tech-WebSockets-green) 
+ ![Static Badge](https://img.shields.io/badge/Tech-Astro/React-maroon)
+
 ## Inspiration
 When children get sick, parents will often call out of work to take care of them. However, for pet owners, it is often difficult to justify the significant financial cost of staying home from work or hiring assistance. Nevertheless, many consider their pets to be members of the family and worry about leaving them alone, for health emergencies can quickly become serious and life-threatening. To solve this problem we propose _petMD_: a convenient and cost-effective way to monitor and watch over pets who are sick or injured without disrupting the daily lives of their owners. 
 
